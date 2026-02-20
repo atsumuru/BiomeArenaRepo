@@ -8,7 +8,6 @@ using CustomExtensions;
 using System.Collections.Generic;
 using System.Linq;
 
-public Stack<Loot> LootStack = new Stack<Loot>();
 
 public class GameBehavior : MonoBehaviour, IManager
 {
@@ -35,6 +34,7 @@ public class GameBehavior : MonoBehaviour, IManager
         set { _state = value; }
     }
 
+    public Stack<Loot> LootStack = new Stack<Loot>();
 
     void Start()
     {
