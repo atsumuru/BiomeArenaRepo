@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 using CustomExtensions;
 
+using System.Collections.Generic;
+using System.Linq;
+
+public Stack<Loot> LootStack = new Stack<Loot>();
+
 public class GameBehavior : MonoBehaviour, IManager
 {
     private int _itemsCollected = 0; // Items Collected
@@ -43,8 +48,14 @@ public class GameBehavior : MonoBehaviour, IManager
     public void Initialize()
     {
         _state = "Game Manager initialized..";
-
         _state.FancyDebug();
+        Debug.Log(_state);
+
+        LootStack.Push(new Loot("Sword of Doom", 5));
+        LootStack.Push(new Loot("HP Boost", 1));
+        LootStack.Push(new Loot("Golden Key", 3));
+        LootStack.Push(new Loot("Pair of Winged Boots", 2));
+        LootStack.Push(new Loot("Mythril Bracer", 4));
     }
 
     public void UpdateScene(string updatedText)
@@ -123,5 +134,21 @@ public class GameBehavior : MonoBehaviour, IManager
     public void RestartScene() // Restart Scene Method
     {
         Utilities.RestartLevel(0);
+    }
+
+    public void PrintLootReport()
+    {
+        Debug.LogFormat("There are {0} random loot items waiting for you!", LootStack.Count);
+
+        var currentItem = LootStack.Pop();
+        var nextItem = LootStack.Peek();
+
+        Debug.LogFormat("You got a {0}! You've got a good chance of finding a {1} next!", currentItem.Name, nextItem.Name);
+        Debug.LogFormat("There are {0} random loot items waiting for you!", LootStack.Count);
+    }
+
+    public void FilterLoot()
+    {
+        var rareLoot = LootStack.Where();
     }
 }
