@@ -26,6 +26,9 @@ public class GameBehavior : MonoBehaviour, IManager
 
     public TMP_Text SpeedText; // Speed Pickup
 
+    public Stack<Loot> LootStack = new Stack<Loot>();
+
+
 
     private string _state;
     public string State
@@ -56,6 +59,8 @@ public class GameBehavior : MonoBehaviour, IManager
         LootStack.Push(new Loot("Golden Key", 3));
         LootStack.Push(new Loot("Pair of Winged Boots", 2));
         LootStack.Push(new Loot("Mythril Bracer", 4));
+        
+        FilterLoot();
     }
 
     public void UpdateScene(string updatedText)
@@ -147,8 +152,18 @@ public class GameBehavior : MonoBehaviour, IManager
         Debug.LogFormat("There are {0} random loot items waiting for you!", LootStack.Count);
     }
 
+    public bool LootPredicate(Loot loot)
+    {
+        return loot.Rarity >= 3;
+    }
+    
     public void FilterLoot()
     {
-        var rareLoot = LootStack.Where();
+        var rareLoot = LootStack.Where(LootPredicate);
+    
+        foreach (var item in rareLoot)
+        {
+                Debug.LogFormat("Rare item: {0}!", item.Name);
+        }
     }
 }
