@@ -37,7 +37,6 @@ public class GameBehavior : MonoBehaviour, IManager
         set { _state = value; }
     }
 
-    public Stack<Loot> LootStack = new Stack<Loot>();
 
     void Start()
     {
