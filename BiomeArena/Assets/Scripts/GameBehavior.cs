@@ -28,6 +28,10 @@ public class GameBehavior : MonoBehaviour, IManager
 
     public Stack<Loot> LootStack = new Stack<Loot>();
 
+    bool gameHasEnded = false;
+    public float restartDelay = 1f;
+    public GameObject completeLevelUI;
+
 
 
     private string _state;
@@ -164,5 +168,32 @@ public class GameBehavior : MonoBehaviour, IManager
         {
                 Debug.LogFormat("Rare item: {0}!", item.Name);
         }
+    }
+
+    public void CompleteLevel ()
+    {
+        completeLevelUI.SetActive(true);
+        Debug.Log("LEVEL WON.");
+    }
+
+    public void RestartGame()
+    {
+        if (gameHasEnded == false)
+        {
+            gameHasEnded = true;
+            Debug.Log("RESTARTING GAME.");
+            Invoke("Restart", restartDelay);
+        }
+    }
+
+    void Restart ()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LoadCredits()
+    {
+        Time.timeScale = 1f; // important if game was paused
+        SceneManager.LoadScene("Credits");
     }
 }
