@@ -32,6 +32,7 @@ public class GameBehavior : MonoBehaviour, IManager
     public float restartDelay = 1f;
     public GameObject completeLevelUI;
 
+    public GameObject loseUI;
 
 
     private string _state;
