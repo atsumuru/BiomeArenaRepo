@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class HealthBehavior : MonoBehaviour
 {
+    public GameBehavior GameManager;
+    public AudioSource sound;
 
-        public GameBehavior GameManager;
     void Start()
     {
-          GameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();        
+        GameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
+        sound = gameObject.GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player")
         {
+            AudioSource.PlayClipAtPoint(sound.clip, transform.position);
             Destroy(this.gameObject);
             Debug.Log("Health Pickup collected!");
 
