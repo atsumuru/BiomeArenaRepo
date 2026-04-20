@@ -1998,10 +1998,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2101135607}
   m_HandleRect: {fileID: 2005384966}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3782,7 +3782,7 @@ AudioSource:
   m_GameObject: {fileID: 357697525}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7481485826680684297, guid: 5ae104cfb74cc1d4cbfbd4a9f17d743b, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: ca83be3d37be958479878470c1bffbce, type: 3}
   m_PlayOnAwake: 1
@@ -8223,6 +8223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788366735}
   - component: {fileID: 788366736}
+  - component: {fileID: 788366737}
   m_Layer: 5
   m_Name: MusicSlider
   m_TagString: Untagged
@@ -8296,13 +8297,30 @@ MonoBehaviour:
   m_FillRect: {fileID: 2021598708}
   m_HandleRect: {fileID: 1014219744}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &788366737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788366734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9859450cbbaa6ba4690c765482063ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeControl
+  _volumeParameter: MusicVolume
+  _mixer: {fileID: 24100000, guid: 5ae104cfb74cc1d4cbfbd4a9f17d743b, type: 2}
+  _slider: {fileID: 788366736}
+  _multiplier: 30
+  _toggle: {fileID: 255375958}
 --- !u!1 &788522411
 GameObject:
   m_ObjectHideFlags: 0
@@ -8560,6 +8578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 813212175}
   - component: {fileID: 813212176}
+  - component: {fileID: 813212177}
   m_Layer: 5
   m_Name: SFXSlider
   m_TagString: Untagged
@@ -8640,6 +8659,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &813212177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813212174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9859450cbbaa6ba4690c765482063ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeControl
+  _volumeParameter: MasterVolume
+  _mixer: {fileID: 24100000, guid: 5ae104cfb74cc1d4cbfbd4a9f17d743b, type: 2}
+  _slider: {fileID: 813212176}
+  _multiplier: 30
+  _toggle: {fileID: 702330024}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
